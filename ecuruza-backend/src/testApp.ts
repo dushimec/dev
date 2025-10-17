@@ -1,0 +1,13 @@
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import authRoutes from './modules/auth/routes/auth.routes';
+import paymentsRoutes from './routes/payments.routes';
+dotenv.config();
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use('/api/auth', authRoutes);
+app.use('/api/payments', paymentsRoutes);
+app.get('/', (req, res) => res.send('Ecuruza backend running successfully 🚀 (test app)'));
+export default app;
